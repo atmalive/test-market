@@ -18,3 +18,29 @@ body {
     text-wrap: revert;
   }
 }
+
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-wrap: normal;
+  white-space: normal;
+  display: -webkit-box;        /* Используем модель отображения в виде flex-подобного контейнера */
+  -webkit-box-orient: vertical;/* Ориентация дочерних элементов в вертикальном направлении */
+  -webkit-line-clamp: 2;
+  word-break: break-all;
+  hyphens: auto;
+}
+
+.desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-wrap: normal;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  word-break: break-all;
+  hyphens: auto;
+}

@@ -26,4 +26,4 @@ export const removeFromStorage = (key) => {
 
 export const clearStorage = () => {
     localStorage.clear();
-};s
+};
