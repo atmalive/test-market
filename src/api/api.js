@@ -26,9 +26,14 @@ export const getProducts = async (page = 1, pageSize = 20) => {
     }
 };
 
-export const createOrder = async (phone, cart) => {
+export const createOrder = async (order) => {
+    const finalOrder = JSON.stringify(order)
     try {
-        const response = await api.post('/order', { phone, cart });
+        const response = await api.post('/order', finalOrder, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
         return response.data;
     } catch (error) {
         console.error('Ошибка при создании заказа:', error);

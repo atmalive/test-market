@@ -25,19 +25,28 @@ export const CartProvider = ({ children }) => {
         }
     }, []);
 
-    // useEffect(() => {
-    //     console.log(customerPhone)
-    // }, [customerPhone])
-    //
-    // useEffect(() => {
-    //     console.log(cartItems)
-    // }, [cartItems])
+    const addToCart = (item, count) => {
+        let newCartItems
+        const foundItem = cartItems.find(i => i.id === item.id)
+        if (!foundItem) {
+            newCartItems = [...cartItems, {...item, count:1}];
+        }
+        else newCartItems = cartItems.map(i => {
+            if (i.id === item.id) {
+                return {...i, count}
+            }
+            return i
+        })
 
-    const addToCart = (item) => {
-        const newCartItems = [...cartItems, item];
         setCartItems(newCartItems);
+
         setInStorage('cartItems', newCartItems);
     };
+
+    const resetContext = () => {
+        setCartItems([])
+        setCustomerPhone('')
+    }
 
     const removeFromCart = (id) => {
         const newCartItems = cartItems.filter(item => item.id !== id);
@@ -55,7 +64,8 @@ export const CartProvider = ({ children }) => {
         addToCart,
         removeFromCart,
         customerPhone,
-        updateCustomerPhone
+        updateCustomerPhone,
+        resetContext
     };
 
     return (

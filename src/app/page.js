@@ -1,6 +1,6 @@
 "use client"
 import {useCallback, useEffect, useRef, useState} from "react";
-import { createOrder, getProducts, getReviews } from "@/api/api";
+import { getProducts, getReviews } from "@/api/api";
 import { useCart } from "@/contexts/CartContext";
 import { Card } from "@/components/Card/Card";
 import { Cart } from "@/components/Cart/Cart";
@@ -49,21 +49,6 @@ export default function Home() {
 
         fetchProducts();
     }, [page]);
-
-
-    const handleOrder = async () => {
-        const phone = '79163452487';
-        const cart = [
-            { id: 12, quantity: 2 },
-            { id: 15, quantity: 5 }
-        ];
-        try {
-            const orderResponse = await createOrder(phone, cart);
-            console.log(orderResponse);
-        } catch (error) {
-            console.error('Order error:', error);
-        }
-    };
 
 
     useEffect(() => {

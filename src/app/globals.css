@@ -25,8 +25,8 @@ body {
   max-width: 100%;
   text-wrap: normal;
   white-space: normal;
-  display: -webkit-box;        /* Используем модель отображения в виде flex-подобного контейнера */
-  -webkit-box-orient: vertical;/* Ориентация дочерних элементов в вертикальном направлении */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   word-break: break-all;
   hyphens: auto;

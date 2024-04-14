@@ -8,7 +8,7 @@ import {useCart} from "@/contexts/CartContext";
 export const Card = ({product}) => {
     const {description, id, image_url, price, title } = product
 
-    const { addToCart, removeFromCart } = useCart();
+    const {cartItems, addToCart, removeFromCart,  customerPhone = '', updateCustomerPhone, resetContext } = useCart();
 
     const [count, setCount] = useState(0);
 
@@ -27,6 +27,16 @@ export const Card = ({product}) => {
             removeFromCart(product.id);
         }
     }, [count]);
+
+    useEffect(() => {
+        console.log('count',count)
+    }, [count]);
+
+    useEffect(() =>  {
+        if (cartItems.length === 0) {
+            setCount(cartItems.length)
+        }
+    }, [cartItems])
 
     return (
         <div className='flex flex-col justify-start items-center bg-[#D9D9D9] rounded-2xl w-full max-w-sm sm:max-w-[301px] px-2.5 py-2 gap-2'>
